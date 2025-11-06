@@ -34,11 +34,11 @@ void setPrecision(int digits) {
     digitalWrite(SPI_NSS, PIO_HIGH);
     spiSendReceive(0x80);
     switch (digits) {
-        case 8: spiSendReceive(0xE0); break; // delay_millis(TIM15, 75); 
-        case 9: spiSendReceive(0xE2); break;   // delay_millis(TIM15, 150); 
-        case 10: spiSendReceive(0xE4); break; //  delay_millis(TIM15, 300);
-        case 11: spiSendReceive(0xE6); break; //  delay_millis(TIM15, 600);
-        case 12: spiSendReceive(0xE8); break; //  delay_millis(TIM15, 700);
+        case 8: spiSendReceive(0xE0); delay_millis(TIM15, 75); break;  
+        case 9: spiSendReceive(0xE2); delay_millis(TIM15, 150); break;  
+        case 10: spiSendReceive(0xE4); delay_millis(TIM15, 300); break; 
+        case 11: spiSendReceive(0xE6); delay_millis(TIM15, 600); break; 
+        case 12: spiSendReceive(0xE8); delay_millis(TIM15, 700); break; 
         default: break;
     }
     digitalWrite(SPI_NSS, PIO_LOW);

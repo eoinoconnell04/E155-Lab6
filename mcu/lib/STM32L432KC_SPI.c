@@ -55,10 +55,12 @@ void initSPI(int br, int cpol, int cpha) {
 //      read:  call once to send address, call second time with dummy variable to read data
 //      write: call once to send address, call second time to send data
 char spiSendReceive(char send) {
+    //while((SPI1->SR & SPI_SR_TXE) == 0); // Wait until the transmit buffer is empty
     while(!(SPI1->SR & SPI_SR_TXE)); // Wait until the transmit buffer is empty
 
     *(volatile char *) (&SPI1->DR) = send; // Transmit the character over SPI
     while(!(SPI1->SR & SPI_SR_RXNE)); // Wait until data has been received
+    //while((SPI1->SR & SPI_SR_RXNE) == 0); // Wait until data has been received
     char rec = (volatile char) SPI1->DR; // Capture return transmission
 
     return rec; // Return received character

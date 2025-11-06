@@ -178,10 +178,6 @@ int main(void) {
     sendString(USART, "<br><br>");
     sendString(USART, currentPrecisionStr);
     sendString(USART, tempPrecisionStr);
-    char tempStatusStr[32];
-    sprintf(tempStatusStr, "Temperature: %d", temp);
-
-    sendString(USART, tempStatusStr);
   
     sendString(USART, webpageEnd);
   }
